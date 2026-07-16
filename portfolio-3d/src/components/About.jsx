@@ -106,6 +106,35 @@ export default function About() {
               My interests span machine learning, deep learning, computer vision, generative AI, and data-driven application development. I enjoy turning ideas into practical products through hands-on projects, hackathons, and continuous learning.
             </p>
 
+            {/* Resume Actions */}
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+              <a href="/chandan_shridhar_Resume.pdf" download="Chandan_Shridhar_Resume.pdf" style={{
+                padding: '0.75rem 1.5rem', borderRadius: '8px', textDecoration: 'none',
+                background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff',
+                fontFamily: 'Inter', fontWeight: 600, fontSize: '0.88rem',
+                boxShadow: '0 8px 24px rgba(99,102,241,0.3)',
+                transition: 'all 0.25s', display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
+                onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 12px 30px rgba(99,102,241,0.45)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 8px 24px rgba(99,102,241,0.3)' }}
+              >
+                <span>Download Resume (PDF)</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </a>
+              <a href="/chandan_shridhar_Resume.pdf" target="_blank" rel="noreferrer" style={{
+                padding: '0.75rem 1.5rem', borderRadius: '8px', textDecoration: 'none',
+                background: 'rgba(15,23,42,0.6)', border: '1px solid rgba(99,102,241,0.3)', color: '#a5b4fc',
+                fontFamily: 'Inter', fontWeight: 600, fontSize: '0.88rem',
+                transition: 'all 0.25s', display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background='rgba(99,102,241,0.1)'; e.currentTarget.style.borderColor='rgba(99,102,241,0.6)'; e.currentTarget.style.color='#fff' }}
+                onMouseLeave={e => { e.currentTarget.style.background='rgba(15,23,42,0.6)'; e.currentTarget.style.borderColor='rgba(99,102,241,0.3)'; e.currentTarget.style.color='#a5b4fc' }}
+              >
+                <span>View Resume</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+
             {/* Info grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem' }}>
               {infos.map((info, i) => (

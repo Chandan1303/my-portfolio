@@ -87,6 +87,20 @@ export default function Hero() {
             onMouseEnter={e => { e.currentTarget.style.background='rgba(99,102,241,0.1)'; e.currentTarget.style.borderColor='rgba(99,102,241,0.7)'; e.currentTarget.style.color='#fff' }}
             onMouseLeave={e => { e.currentTarget.style.background='transparent'; e.currentTarget.style.borderColor='rgba(99,102,241,0.4)'; e.currentTarget.style.color='#a5b4fc' }}
           >View Projects</button>
+
+          <a href="/chandan_shridhar_Resume.pdf" download="Chandan_Shridhar_Resume.pdf" style={{
+            padding: '0.85rem 2rem', borderRadius: '10px', textDecoration: 'none',
+            background: 'linear-gradient(135deg, #06b6d4, #0891b2)', color: '#fff',
+            fontFamily: 'Inter', fontWeight: 600, fontSize: '0.95rem',
+            boxShadow: '0 8px 30px rgba(6,182,212,0.3)',
+            transition: 'all 0.25s', letterSpacing: '0.3px', display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+          }}
+            onMouseEnter={e => { e.currentTarget.style.transform='translateY(-2px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(6,182,212,0.45)' }}
+            onMouseLeave={e => { e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 8px 30px rgba(6,182,212,0.3)' }}
+          >
+            <span>Download Resume</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </a>
         </div>
 
         {/* Social links */}

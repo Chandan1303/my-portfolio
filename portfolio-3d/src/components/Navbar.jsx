@@ -62,7 +62,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop nav */}
-        <div style={{ display: 'flex', gap: '0rem' }} className="nav-desktop">
+        <div style={{ display: 'flex', gap: '0rem', alignItems: 'center' }} className="nav-desktop">
           {links.map(link => (
             <button key={link} onClick={() => scrollTo(link)} style={{
               background: active === link ? 'rgba(99,102,241,0.15)' : 'transparent',
@@ -91,6 +91,33 @@ export default function Navbar() {
               }}
             >{link}</button>
           ))}
+          <a href="/chandan_shridhar_Resume.pdf" target="_blank" rel="noreferrer" style={{
+            background: 'rgba(6, 182, 212, 0.1)',
+            border: '1px solid rgba(6, 182, 212, 0.3)',
+            cursor: 'pointer',
+            color: '#22d3ee',
+            fontFamily: 'Inter', fontWeight: 600, fontSize: '0.83rem',
+            padding: '0.45rem 0.9rem', borderRadius: '8px',
+            marginLeft: '0.6rem',
+            transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+            letterSpacing: '0.3px',
+            textDecoration: 'none',
+            display: 'inline-flex', alignItems: 'center', gap: '0.3rem'
+          }}
+            onMouseEnter={e => { 
+              e.currentTarget.style.background = 'rgba(6, 182, 212, 0.2)';
+              e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.6)';
+              e.currentTarget.style.color = '#fff';
+            }}
+            onMouseLeave={e => { 
+              e.currentTarget.style.background = 'rgba(6, 182, 212, 0.1)';
+              e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.3)';
+              e.currentTarget.style.color = '#22d3ee';
+            }}
+          >
+            <span>Resume</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
 
         {/* Hamburger */}
@@ -117,6 +144,20 @@ export default function Navbar() {
               padding: '0.7rem 1rem', textAlign: 'left', borderRadius: '8px'
             }}>{link}</button>
           ))}
+          <a href="/chandan_shridhar_Resume.pdf" target="_blank" rel="noreferrer" style={{
+            background: 'rgba(6, 182, 212, 0.1)',
+            border: '1px solid rgba(6, 182, 212, 0.25)',
+            cursor: 'pointer',
+            color: '#22d3ee',
+            fontFamily: 'Inter', fontWeight: 600, fontSize: '0.95rem',
+            padding: '0.7rem 1rem', borderRadius: '8px',
+            textDecoration: 'none',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            marginTop: '0.5rem'
+          }}>
+            <span>Resume</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
       )}
 
