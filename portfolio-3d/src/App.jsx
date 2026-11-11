@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './index.css'
 
 const projects = [
@@ -34,7 +34,43 @@ function SectionHead({index,kicker,title,aside}) {
   return <div className="section-head"><div><span className="section-index">{index} / {kicker}</span><h2>{title}<i>.</i></h2></div>{aside&&<p>{aside}</p>}</div>
 }
 export default function App() {
- return <div className="site-shell"><Header/><main>
+ useEffect(() => {
+  const targets = document.querySelectorAll('.section-head, .work-card, .education-entry, .skill-tile, .journey-item, .credential-card')
+  targets.forEach((el, index) => {
+   el.classList.add('motion-reveal')
+   el.style.setProperty('--motion-delay', `${(index % 4) * 70}ms`)
+  })
+  if (!('IntersectionObserver' in window)) {
+   targets.forEach(el => el.classList.add('motion-visible'))
+   return
+  }
+  const observer = new IntersectionObserver(entries => {
+   entries.forEach(entry => {
+    if (entry.isIntersecting) {
+     entry.target.classList.add('motion-visible')
+     observer.unobserve(entry.target)
+    }
+   })
+  }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' })
+  targets.forEach(el => observer.observe(el))
+  const progress = document.querySelector('.scroll-progress')
+  let frame = 0
+  const updateProgress = () => {
+   cancelAnimationFrame(frame)
+   frame = requestAnimationFrame(() => {
+    const max = document.documentElement.scrollHeight - window.innerHeight
+    if (progress) progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`
+   })
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true })
+  updateProgress()
+  return () => {
+   observer.disconnect()
+   window.removeEventListener('scroll', updateProgress)
+   cancelAnimationFrame(frame)
+  }
+ }, [])
+ return <div className="site-shell"><div className="scroll-progress" aria-hidden="true"/><Header/><main>
   <section className="hero" id="home"><div className="hero-copy"><div className="availability"><i/> INFORMATION SCIENCE ENGINEERING <span>·</span> NIE MYSURU</div><h1>Ideas into<br/><em>intelligent</em><br/>experiences<span className="hero-dot">.</span></h1><p className="hero-summary">I’m Chandan Shridhar Hegde, a final-year engineering student shaping thoughtful software with AI, data and full-stack development.</p><div className="hero-buttons"><a className="button-primary" href="#work">Explore my work <Arrow/></a><a className="button-quiet" href="/Chandan_Shridhar_Hegde_Resume.pdf" download>Download résumé <Arrow up/></a></div><div className="social-row"><a href="https://github.com/Chandan1303" target="_blank" rel="noreferrer">GitHub <Arrow up/></a><a href="https://www.linkedin.com/in/chandan-shridhar-hegde-397524307" target="_blank" rel="noreferrer">LinkedIn <Arrow up/></a><a href="mailto:hegdechandan6@gmail.com">Email <Arrow up/></a></div></div><div className="hero-art"><div className="portrait-wrap"><img src="/myphoto.jpeg" alt="Chandan Shridhar Hegde"/><div className="portrait-label">CHANDAN<br/>SHRIDHAR HEGDE</div><div className="portrait-number">01</div></div><div className="hero-orbit orbit-top">SIRSI, KARNATAKA</div><div className="hero-orbit orbit-bottom">BUILD / LEARN / REPEAT</div><div className="hero-sticker">ISE<br/><b>’27</b></div></div><div className="hero-index"><span>PORTFOLIO / 2026</span><a href="#work">SCROLL TO EXPLORE ↓</a><span>MYSURU · INDIA</span></div></section>
   <section className="work-section section-pad" id="work"><SectionHead index="01" kicker="SELECTED WORK" title="Built with purpose" aside="Machine learning, useful interfaces and systems made for real questions."/><div className="work-grid">{projects.map(project=><Project key={project.n} project={project}/>)}</div></section>
   <section className="about-section section-pad" id="about"><div className="about-side"><span className="section-index">02 / ABOUT</span><div className="about-stamp">CURIOUS<br/>BY NATURE<span>✳</span></div></div><div className="about-content"><h2>Grounded in engineering.<br/><em>Drawn to what’s next.</em></h2><div className="about-copy"><p>I’m pursuing a B.E. in Information Science and Engineering at The National Institute of Engineering (NIE), Mysuru. I’m currently in my seventh semester with a CGPA of 8.78.</p><p>My interests span software engineering, artificial intelligence and machine learning, data analytics, and full-stack application development. I grew up in Sirsi, Karnataka.</p></div><div className="education-list"><div className="education-entry"><span>2023 — PRESENT</span><div><h3>B.E. Information Science &amp; Engineering</h3><p>The National Institute of Engineering (NIE), Mysuru · 7th semester / final year</p><small>Core interests: AI/ML, full-stack development, data structures, algorithms and DBMS.</small></div><strong>8.78<small>CGPA</small></strong></div><div className="education-entry"><span>2021 — 2023</span><div><h3>Pre-University Course · PCMCs</h3><p>MES Chaitanya Pre-University College, Sirsi</p><small>Physics, Chemistry, Mathematics and Computer Science.</small></div><strong>95%<small>MARKS</small></strong></div></div></div></section>
