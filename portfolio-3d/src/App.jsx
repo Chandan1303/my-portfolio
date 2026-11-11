@@ -24,7 +24,7 @@ const credentials = [
 const Arrow = ({up=false}) => <span aria-hidden="true">{up ? '↗' : '→'}</span>
 function Header() {
   const [open,setOpen] = useState(false)
-  const links = [['Work','#work'],['About','#about'],['Skills','#skills'],['Journey','#journey'],['Contact','#contact']]
+  const links = [['Projects','#work'],['About','#about'],['Skills','#skills'],['Journey','#journey'],['Contact','#contact']]
   return <header className="topbar"><a className="brand" href="#home"><span className="brand-stamp">CH<span>↗</span></span><span>CHANDAN HEGDE<small>SOFTWARE · AI · DATA</small></span></a><button className="nav-toggle" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Close −' : 'Menu +'}</button><nav className={open ? 'main-nav nav-open' : 'main-nav'} aria-label="Main navigation">{links.map(([label,href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}<a className="nav-cv" href="/Chandan_Shridhar_Hegde_Resume.pdf" download>Résumé <Arrow up/></a></nav></header>
 }
 function Project({project}) {
